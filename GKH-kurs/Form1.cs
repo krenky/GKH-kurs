@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -82,6 +84,16 @@ namespace GKH_kurs
             houses.GetHouse(Convert.ToInt32(HouseGrid.Rows[HouseGrid.SelectedCells[0].RowIndex].Cells[0].Value)).DeleteApartment(a);
             UpdateHouseTable();
             ApartGrip.DataSource = houses.GetHouse(Convert.ToInt32(HouseGrid.Rows[HouseGrid.SelectedCells[0].RowIndex].Cells[0].Value)).Apartments.Where(x => x != null).ToList();
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                using (FileStream fs = (FileStream)saveFileDialog.OpenFile())
+                {
+                    JsonSerializer.Serialize<HousesQueue>(new Utf8JsonWriter(fs), houses);
+                }
         }
     }
 }

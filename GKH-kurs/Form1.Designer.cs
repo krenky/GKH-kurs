@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Update = new System.Windows.Forms.Button();
+            this.Save = new System.Windows.Forms.Button();
             this.HouseGrid = new System.Windows.Forms.DataGridView();
             this.ApartGrip = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,18 +45,20 @@
             this.Payment = new System.Windows.Forms.TextBox();
             this.DelApar = new System.Windows.Forms.Button();
             this.AddApar = new System.Windows.Forms.Button();
+            this.Load1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.HouseGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApartGrip)).BeginInit();
             this.SuspendLayout();
             // 
-            // Update
+            // Save
             // 
-            this.Update.Location = new System.Drawing.Point(12, 340);
-            this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(698, 28);
-            this.Update.TabIndex = 0;
-            this.Update.Text = "Обновить";
-            this.Update.UseVisualStyleBackColor = true;
+            this.Save.Location = new System.Drawing.Point(12, 340);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(346, 28);
+            this.Save.TabIndex = 0;
+            this.Save.Text = "Сохранить";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // HouseGrid
             // 
@@ -201,11 +203,21 @@
             this.AddApar.UseVisualStyleBackColor = true;
             this.AddApar.Click += new System.EventHandler(this.AddApar_Click);
             // 
+            // Load1
+            // 
+            this.Load1.Location = new System.Drawing.Point(364, 340);
+            this.Load1.Name = "Load1";
+            this.Load1.Size = new System.Drawing.Size(346, 28);
+            this.Load1.TabIndex = 17;
+            this.Load1.Text = "Загрузить";
+            this.Load1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 470);
+            this.Controls.Add(this.Load1);
             this.Controls.Add(this.DelApar);
             this.Controls.Add(this.AddApar);
             this.Controls.Add(this.label5);
@@ -222,7 +234,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ApartGrip);
             this.Controls.Add(this.HouseGrid);
-            this.Controls.Add(this.Update);
+            this.Controls.Add(this.Save);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -235,7 +247,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Update;
+        private System.Windows.Forms.Button Save;
         private System.Windows.Forms.DataGridView HouseGrid;
         private System.Windows.Forms.DataGridView ApartGrip;
         private System.Windows.Forms.Label label1;
@@ -252,5 +264,6 @@
         private System.Windows.Forms.TextBox Payment;
         private System.Windows.Forms.Button DelApar;
         private System.Windows.Forms.Button AddApar;
+        private System.Windows.Forms.Button Load1;
     }
 }

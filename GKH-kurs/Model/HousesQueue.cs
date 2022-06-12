@@ -91,6 +91,7 @@ namespace GKH_kurs.Model
             {
                 if( current.HouseId == houseId )
                     return current;
+                current = current.houseNext;
             }
             return null;
         }
