@@ -125,6 +125,7 @@
             this.HouseNum.Name = "HouseNum";
             this.HouseNum.Size = new System.Drawing.Size(295, 23);
             this.HouseNum.TabIndex = 7;
+            this.HouseNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HouseNum_KeyPress);
             // 
             // Street
             // 
@@ -175,6 +176,7 @@
             this.ApartNum.Name = "ApartNum";
             this.ApartNum.Size = new System.Drawing.Size(290, 23);
             this.ApartNum.TabIndex = 12;
+            this.ApartNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ApartNum_KeyPress);
             // 
             // Payment
             // 
@@ -182,6 +184,7 @@
             this.Payment.Name = "Payment";
             this.Payment.Size = new System.Drawing.Size(290, 23);
             this.Payment.TabIndex = 11;
+            this.Payment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Payment_KeyPress);
             // 
             // DelApar
             // 
@@ -211,6 +214,7 @@
             this.Load1.TabIndex = 17;
             this.Load1.Text = "Загрузить";
             this.Load1.UseVisualStyleBackColor = true;
+            this.Load1.Click += new System.EventHandler(this.Load1_Click);
             // 
             // Form1
             // 

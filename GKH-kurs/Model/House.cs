@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GKH_kurs.Model
@@ -14,25 +15,46 @@ namespace GKH_kurs.Model
         private int houseId;
         private int count;
         private Apartment[] apartments = new Apartment[5];
-        public House houseNext;
-
+        private House houseNext;
+        /// <summary>
+        /// Конструктор дома
+        /// </summary>
         public House()
         {
-            houseId = 0;
+            HouseId = 0;
         }
-
+        /// <summary>
+        /// Конструктор дома
+        /// </summary>
+        /// <param name="street">Улица дома</param>
+        /// <param name="number">Номер дома</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public House(string street, int number)
         {
             Street = street ?? throw new ArgumentNullException(nameof(street));
             Number = number;
             LastIndex++;
-            houseId = LastIndex;
+            HouseId = LastIndex;
         }
-
-        public int HouseId => houseId;
+        /// <summary>
+        /// Идентефикатор дома
+        /// </summary>
+        public int HouseId { get => houseId; set => houseId = value; }
+        /// <summary>
+        /// Улица
+        /// </summary>
         public string Street { get; set; }
+        /// <summary>
+        /// Номер дома
+        /// </summary>
         public int Number { get; set; }
+        /// <summary>
+        /// Список квартир в доме 
+        /// </summary>
         public Apartment[] Apartments { get => apartments; set => apartments = value; }
+        /// <summary>
+        /// Суммарная оплат по всем квартирам
+        /// </summary>
         public float AllPayments
         {
             get
@@ -47,6 +69,10 @@ namespace GKH_kurs.Model
         /// Идентефикатор последнего добавленого дома
         /// </summary>
         public static int LastIndex { get; set; } = 0;
+        /// <summary>
+        /// Ссылка на следуюющий дом
+        /// </summary>
+        public House HouseNext { get => houseNext; set => houseNext = value; }
 
         /// <summary>
         /// Изменения размера массива при малом количестве места в нём
@@ -125,7 +151,7 @@ namespace GKH_kurs.Model
         /// <summary>
         /// Метод сдвига элементов массива в вперед
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="number">Номер квартиры</param>
         void MoveNextApartments(int number)
         {
             for (int i = count; i >= number; i--)
@@ -137,7 +163,7 @@ namespace GKH_kurs.Model
         /// <summary>
         /// Метод сдвига элементов массива назад
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="number">Номер квартиры</param>
         void MoveBackApartments(int number)
         {
             for (int i = number; i < count; i++)
@@ -148,7 +174,7 @@ namespace GKH_kurs.Model
         /// <summary>
         /// Удаление квартиры из дома
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="number">Номер квартиры</param>
         /// <returns></returns>
         public bool DeleteApartment(int number)
         {
@@ -159,7 +185,7 @@ namespace GKH_kurs.Model
         /// <summary>
         /// Проверка наличия квартиры в доме
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="number">Номер квартиры</param>
         /// <returns></returns>
         public bool Search(int number)
         {
@@ -173,7 +199,7 @@ namespace GKH_kurs.Model
         /// <summary>
         /// Получение квартиры
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="number">Номер квартиры</param>
         /// <returns></returns>
         public Apartment GetApartment(int number)
         {

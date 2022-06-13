@@ -28,19 +28,19 @@ namespace GKH_kurs.Model
         /// <returns></returns>
         public bool AddHouse(string street, int number)
         {
-            if(Head.houseNext == null)
+            if(Head.HouseNext == null)
             {
-                head.houseNext = new House(street, number);
+                head.HouseNext = new House(street, number);
                 return true;
             }
             else
             {
-                House current = Head.houseNext;
-                while(current.houseNext != null)
+                House current = Head.HouseNext;
+                while(current.HouseNext != null)
                 {
-                    current = current.houseNext;
+                    current = current.HouseNext;
                 }
-                current.houseNext = new House(street, number);
+                current.HouseNext = new House(street, number);
                 return true;
             }
         }
@@ -50,12 +50,12 @@ namespace GKH_kurs.Model
         /// <returns></returns>
         public bool DeleteHouse()
         {
-            if (Head.houseNext != null)
+            if (Head.HouseNext != null)
             {
-                if (head.houseNext.houseNext == null)
-                    head.houseNext = null;
+                if (head.HouseNext.HouseNext == null)
+                    head.HouseNext = null;
                 else
-                    head.houseNext = head.houseNext.houseNext;
+                    head.HouseNext = head.HouseNext.HouseNext;
                 return true;
             }
             else
@@ -70,14 +70,14 @@ namespace GKH_kurs.Model
         /// <returns></returns>
         public bool UpdateHouse(int houseId, string newStreet, int newNumber)
         {
-            House current = Head.houseNext;
+            House current = Head.HouseNext;
             while (current.HouseId != houseId)
             {
-                if (current.houseNext == null)
+                if (current.HouseNext == null)
                 {
                     return false;
                 }
-                current = current.houseNext;
+                current = current.HouseNext;
             }
             current.Street = newStreet;
             current.Number = newNumber;
@@ -86,23 +86,23 @@ namespace GKH_kurs.Model
 
         public House GetHouse(int houseId)
         {
-            var current = head.houseNext;
+            var current = head.HouseNext;
             while( current != null )
             {
                 if( current.HouseId == houseId )
                     return current;
-                current = current.houseNext;
+                current = current.HouseNext;
             }
             return null;
         }
 
         public IEnumerable<House> GetEnumerator()
         {
-            var current = head.houseNext;
+            var current = head.HouseNext;
             while(current != null)
             {
                 yield return current;
-                current = current.houseNext;
+                current = current.HouseNext;
             }
         }
     }
